@@ -20,7 +20,7 @@ app.post('/api/articles/:name/upvote', (req, res) => {
     const articleName = req.params.name;
     articlesInfo[articleName].upvotes +=1;
 
-    res.status(200).send(`${articleName} has now ${articlesInfo[articleName].upvotes} upvotes.`);
+    res.status(200).send(`${articleName} has now ${articlesInfo[articleName].upvotes} upvotes!`);
 })
 
 app.listen(8080, () => console.log( 'listening to port 8080'));
