@@ -4,12 +4,15 @@ import bodyParser  from 'body-parser';
 const articlesInfo = {
     'learn-react': {
         upvotes: 0,
+        comments: [],
     },
     'learn-node': {
         upvotes: 0,
+        comments: [],
     },
     'my-thoughts-on-resumes': {
         upvotes: 0,
+        comments: [],
     },
 }
 
@@ -21,6 +24,14 @@ app.post('/api/articles/:name/upvote', (req, res) => {
     articlesInfo[articleName].upvotes +=1;
 
     res.status(200).send(`${articleName} has now ${articlesInfo[articleName].upvotes} upvotes!`);
+})
+
+app.post('/api/articles/:name/add-coment', (req, res) => {
+    const {username, text} = req.body;
+    const articleName = req.params.name;
+    articlesInfo[articleName].comments.push({username, text});
+
+    res.status(200).send(articlesInfo[articleName]);
 })
 
 app.listen(8080, () => console.log( 'listening to port 8080'));
