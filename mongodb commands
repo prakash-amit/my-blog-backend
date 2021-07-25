@@ -1,0 +1,16 @@
+//to create a database say my-blog
+use my-blog
+
+//to insert document in a collection named articles
+db.articles.insert([ { name : 'learn-react', upvotes : 0, comments:[] }, { name : 'learn-node', upvotes : 0, comments : [] }, { name : 'my-thoughts-on-resumes', upvotes : 0, comments : [] }])
+
+
+//to find all documents of a collection named articles and preety print it
+db.articles.find({}).pretty()
+
+//to find documents with specific criteria of a collection named articles and preety print it
+db.articles.find({name:'learn-react'}).pretty()
+
+//to find documents with specific criteria of a collection named articles and one result is expected
+db.articles.findOne({name:'learn-react'})
+note : findOne does not support and preety() and prints result in preety format by default
